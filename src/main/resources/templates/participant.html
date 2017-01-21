@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Participant</title>
+    </head>
+    <body>
+
+        
+        <ul>
+            <li th:each="participant : ${participants}">
+                <span th:text="${participant.name}">name</span> <span th:text="${participant.address}">address</span> <span th:text="${participant.phone}">phone</span>
+                
+            </li>
+        </ul>
+        
+        <form action="#" th:action="@{/searchform}" method="POST">
+            <p><label for="name">Name</label>: <input type="text" name="name" id="name"/></p>
+            <p><input type="submit" value="Submit" /></p>
+        </form>
+
+
+
+    </body>
+</html>
