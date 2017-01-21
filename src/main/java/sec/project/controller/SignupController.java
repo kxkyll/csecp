@@ -31,11 +31,4 @@ public class SignupController {
         model.addAttribute("participants", signupRepository.findAll());
         return "done";
     }
-    
-    @RequestMapping(value = "/participants", method = RequestMethod.GET)
-    public String list(Model model) {
-        model.addAttribute("participants", signupRepository.findAll());
-        return "participants";
-    }
-
 }
