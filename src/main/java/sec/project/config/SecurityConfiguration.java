@@ -23,6 +23,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // no real security at the moment
         http.authorizeRequests()
                 .anyRequest().permitAll();
+        http.formLogin()
+                .permitAll();
+        http.formLogin().defaultSuccessUrl("/form.html", true);
+        
     }
 
     @Autowired

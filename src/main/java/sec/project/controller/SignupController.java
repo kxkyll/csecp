@@ -18,11 +18,18 @@ public class SignupController {
     @Autowired
     private SignupRepository signupRepository;
 
-    @RequestMapping("*")
+   @RequestMapping("*")
     public String defaultMapping() {
-        return "redirect:/form";
+        return "index";
+        //return "redirect:/form";
     }
-
+    
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout() {
+        //todo clear the session cookie
+        return "redirect:/index";
+    }
+    
     @RequestMapping(value = "/form", method = RequestMethod.GET)
     public String loadForm() {
         return "form";
@@ -43,7 +50,6 @@ public class SignupController {
     
     @RequestMapping(value = "/participant/{id}", method = RequestMethod.GET)
     public String getParticipant(@PathVariable Long id, Model model) {
-        System.out.println("haetaan yhtä-------------------"+id);
         model.addAttribute("participants", signupRepository.findOne(id) );
         return "participant";
     }
@@ -53,21 +59,15 @@ public class SignupController {
     
     @RequestMapping(value = "/searchform", method = RequestMethod.POST)
     public String searchForm(@RequestParam String name, Model model) {
-        //System.out.println("eikös tänne päästäkään--------------------------??");
-        //System.out.println("name: " +name);
-        //List<Signup> findByName = signupRepository.findByName(name);
-        //System.out.println(findByName.size());
+        
         List<Signup> all = signupRepository.findAll();
         List<Signup> found = new ArrayList<Signup>();
         for (Signup one: all) {
             if (one.getName().equals(name)) {
-                found.add(one);
-                
-            }
-            
+                found.add(one);   
+            }   
         }
         model.addAttribute("participants", found);
-        //model.addAttribute("participants", findByName);
         return "participant";
     }
 }
