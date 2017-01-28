@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Cancidate form</title>
+        <title>Participant form</title>
     </head>
     <body>
         <div th:replace="header :: header">...</div>
 
-        <h1>Propose a candidate</h1>
+        <h1>Sign to our event</h1>
 
         <form action="#" th:action="@{/form}" method="POST">
             <p><label for="name">Name</label>: <input type="text" name="name" id="name"/></p>
@@ -15,7 +15,6 @@
             <p><input type="submit" value="Submit" /></p>
         </form>
 
-        <p></p>
-        <!--<a th:href="@{/logout}">Logout</a>-->
+        
     </body>
 </html>

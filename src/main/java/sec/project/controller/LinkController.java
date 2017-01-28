@@ -1,6 +1,8 @@
 package sec.project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +21,9 @@ public class LinkController {
     @RequestMapping(value = "/link", method = RequestMethod.GET)
     public String loadForm(Model model) {
         model.addAttribute("links", linkRepository.findAll());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName(); //get logged in username
+        model.addAttribute("username", username);
         return "link";
     }
 
@@ -28,13 +33,19 @@ public class LinkController {
         linkRepository.save(new Link(title, url));
        
         model.addAttribute("links", linkRepository.findAll());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName(); //get logged in username
+        model.addAttribute("username", username);
+        
         return "link";
     }
     
     @RequestMapping(value = "/links", method = RequestMethod.GET)
     public String list(Model model) {
         model.addAttribute("links", linkRepository.findAll());
-      
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName(); //get logged in username
+        model.addAttribute("username", username);
         return "link";
     }
 
