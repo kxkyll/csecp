@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" th:fragment="header">
+      <div class="container">
+          <p>My security project</p>
+   
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <a href="/signin" th:href="@{/form}">Sign to our event</a>
+              <a href="#" th:href="@{/participant}">Search participants</a>
+              <a href="#" th:href="@{/links}">Suggest links</a>
+              <a href="#" th:href="@{/logout}">Logout</a>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

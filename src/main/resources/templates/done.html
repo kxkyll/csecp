@@ -4,8 +4,8 @@
         <title>Thank you!</title>
     </head>
     <body>
-
-        <h1>Thank you! You have been signed up to the event!</h1>
+        <div th:replace="header :: header">...</div>
+        <h1>Thank you! You have been selected to the parliament!</h1>
         
         <ul>
             <li th:each="participant : ${participants}">
@@ -14,12 +14,5 @@
             </li>
         </ul>
         
-        <a th:href="@{/participant}">Search for participants</a>
-        <a th:href="@{/link}">Suggest a link</a>
-        
-        <a th:href="@{/logout}">Logout</a>
-        
-
-
     </body>
 </html>
